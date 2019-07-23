@@ -1,0 +1,14 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before-install:
+  - docker build -t leelawrence/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true leelawrence/docker-react npm run test
+#
+# Note this is the new format not
+#  - docker run leelawrence/docker-react npm run test -- --coverage
+
